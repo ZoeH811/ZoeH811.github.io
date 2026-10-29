@@ -1,0 +1,14 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="#596b60"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- Top-down aircraft silhouette, shared by decorative portfolio details. -->
+  <path
+    d="M32 5c-3 0-4 5-4 10v9L9 37v5l19-6v12l-7 6v4l11-3 11 3v-4l-7-6V36l19 6v-5L36 24v-9c0-5-1-10-4-10Z"
+  />
+</svg>

@@ -1,5 +1,6 @@
 'use strict';
 
+// Shared navigation: guards let this script run on both portfolio pages.
 const menuToggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#primary-navigation');
 
@@ -15,14 +16,17 @@ if (menuToggle && navigation) {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
     navigation.classList.toggle('is-open', !isOpen);
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
-    menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    menuToggle.setAttribute(
+      'aria-label',
+      isOpen ? 'Open navigation menu' : 'Close navigation menu',
+    );
   });
 
-  navigation.querySelectorAll('a').forEach(link => {
+  navigation.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
 
-  document.addEventListener('keydown', event => {
+  document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       const wasOpen = menuToggle.getAttribute('aria-expanded') === 'true';
       closeMenu();
@@ -30,14 +34,15 @@ if (menuToggle && navigation) {
     }
   });
 
-  document.addEventListener('click', event => {
+  document.addEventListener('click', (event) => {
     if (!navigation.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
   });
 
-  window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+  window.matchMedia('(min-width: 761px)').addEventListener('change', (event) => {
     if (event.matches) closeMenu();
   });
 }
 
+// Keep the copyright year current without changing the HTML each January.
 const year = document.querySelector('#current-year');
 if (year) year.textContent = String(new Date().getFullYear());
