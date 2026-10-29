@@ -568,6 +568,9 @@ h1 em {
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -776,7 +779,28 @@ h1 em {
 }
 
 .project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
   padding: 26px 28px 30px;
+}
+
+/* Keep previews consistent; full captions remain available in project details. */
+.project-card > .project-gallery,
+.project-card > .media-placeholder {
+  flex: none;
+  height: 275px;
+  min-height: 0;
+}
+
+.project-card > .project-gallery figcaption {
+  display: none;
+}
+
+.project-card .project-body > .tech-tags {
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 .project-meta {
@@ -784,6 +808,7 @@ h1 em {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .status-pill {
@@ -817,7 +842,7 @@ h1 em {
 .project-card .project-body > p:not(.project-coming) {
   color: var(--muted);
   margin: 0;
-  min-height: 84px;
+  min-height: 0;
   font-size: 0.94rem;
 }
 
@@ -1524,6 +1549,11 @@ h1 em {
   color: var(--muted);
   max-width: 600px;
 }
+
+/* The hero heading uses an unbroken italic line; the library heading must wrap. */
+#main > h1 em {
+  white-space: normal;
+}
 .project-filters {
   display: flex;
   align-items: end;
@@ -1539,6 +1569,7 @@ h1 em {
   display: grid;
   gap: 8px;
   flex: 1 1 180px;
+  min-width: 0;
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -1614,21 +1645,8 @@ button {
   .project-gallery video {
     height: 225px;
   }
-}
-
-/* Graphics project gallery video improvements */
-
-.project-gallery video {
-  display: block;
-  width: 100%;
-  height: 275px;
-  object-fit: contain;
-  background-color: #000;
-  border-radius: 10px;
-}
-
-/* Keep media within the gallery */
-.project-gallery figure {
-  min-width: 0;
-  overflow: hidden;
+  .project-card > .project-gallery,
+  .project-card > .media-placeholder {
+    height: 225px;
+  }
 }
